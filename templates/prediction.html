@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/prediction.css') }}">
+</head>
+<body>
+
+  <div class="card">
+    {% if 'High' in result %}
+      <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1828/1828665.png" alt="Emergency Icon">
+    {% else %}
+      <img class="icon" src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Good News Icon">
+    {% endif %}
+
+    <!-- ✅ Classe dynamique selon résultat -->
+    <div class="result {% if 'High' in result %}high{% else %}low{% endif %}">
+      {{ result }}
+    </div>
+
+    {% if 'High' in result %}
+    <div class="tips">
+      <h3>⚠️ Health Advisory</h3>
+      <ul>
+        <li>🩺 Schedule a medical consultation as soon as possible.</li>
+        <li>🚭 If you smoke, seek support to quit immediately.</li>
+        <li>📋 Discuss with your doctor about lung screenings (CT scan).</li>
+        <li>🌬️ Improve indoor air quality (ventilation, avoid pollutants).</li>
+      </ul>
+      <p>📘 Resources:</p>
+      <a href="https://www.lung.org/lung-health-diseases/lung-disease-lookup/lung-cancer" class="resource" target="_blank">American Lung Association</a>
+      <a href="https://www.quit.org/" class="resource" target="_blank">Quit Smoking Help</a>
+      <a href="https://www.cancer.org/cancer/lung-cancer.html" class="resource" target="_blank">American Cancer Society – Lung Cancer</a>
+    </div>
+    {% else %}
+    <div class="tips">
+      <h3>✅ Keep It Up!</h3>
+      <ul>
+        <li>💨 Stay away from smoking and second-hand smoke.</li>
+        <li>🥗 Eat healthy and stay physically active.</li>
+        <li>🧘 Manage stress and practice regular checkups.</li>
+        <li>🛑 Stay alert for early symptoms and act early.</li>
+      </ul>
+      <p>🌐 Helpful Articles:</p>
+      <a href="https://www.who.int/news-room/fact-sheets/detail/cancer" class="resource" target="_blank">WHO – Cancer Prevention</a>
+      <a href="https://www.lung.org/quit-smoking" class="resource" target="_blank">Lung.org – Quit Smoking</a>
+      <a href="https://www.cdc.gov/cancer/lung/basic_info/prevention.htm" class="resource" target="_blank">CDC – Lung Cancer Prevention</a>
+    </div>
+    {% endif %}
+
+    <a href="javascript:history.back()" class="btn">← Back to the form</a>
+    <br><br>
+    <a href="{{ url_for('logout') }}" class="btn" style="background-color: #dc3545;">🔒 Logout</a>
+  </div>
+
+</body>
+</html>

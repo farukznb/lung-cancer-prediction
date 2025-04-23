@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="static/css/login.css">
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="header">
+        
+        <h2 class="animation a1">Welcome Back</h2>
+        <h4 class="animation a2">Log in to your account using email and password</h4>
+      </div>
+      <form class="form" method="POST" action="{{ url_for('do_admin_login') }}">
+        <input type="text" name="username" class="form-field animation a3" placeholder="Email Address" required>
+        <input type="password" name="password" class="form-field animation a4" placeholder="Password" required>
+        <p class="animation a5"><a href="#">Forgot Password</a></p>
+
+        <button type="submit" class="animation a6">LOGIN</button>
+        <p style="margin-top: 10px;">
+          <a href="{{ url_for('signup') }}" class="btn" style="display: inline-block; margin-top: 10px;">Create an account</a>
+        </p>
+      </form>
+  
+        
+  </div>
+  <div class="right"></div>        
+</body>
+</html>

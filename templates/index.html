@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Prediction Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+      body {
+        background: url("https://www.medicalnewstoday.com/content/images/articles/324/324682/lungs.jpg") no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+      }
+      .form-wrapper {
+        max-width: 700px;
+        margin: 30px auto;
+        padding: 40px;
+        border-radius: 15px;
+        background: #f7f7fa;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      h3.title {
+        color: #5e4b8b;
+        font-size: 26px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      form ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      form li {
+        margin-bottom: 20px;
+        font-size: 16px;
+        text-align: left;
+      }
+
+      form label {
+        font-weight: 600;
+        margin-right: 10px;
+      }
+
+      input[type="radio"],
+      input[type="number"] {
+        margin-right: 10px;
+      }
+
+      input[type="number"] {
+        padding: 8px;
+        width: 100%;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+
+      .submit-button {
+        background-color: #7e57c2;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .submit-button:hover {
+        background-color: #6a4bc3;
+      }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="form-wrapper">
+  <h3 class="title">📝 Please Fill the Form</h3>
+
+  <form method="POST" action="/predict">
+    <ul>
+
+      <!-- GENDER -->
+      <li>
+        <label>Gender:</label>
+        <input id="gender_m" type="radio" name="gender" value="1" required>
+        <label for="gender_m">Male</label>
+        <input id="gender_f" type="radio" name="gender" value="0">
+        <label for="gender_f">Female</label>
+      </li>
+
+      <!-- AGE -->
+      <li>
+        <label for="age">Age:</label>
+        <input id="age" name="age" type="number" placeholder="Enter your age" required>
+      </li>
+
+      <!-- BINARY QUESTIONS -->
+      {% for field, label in [
+        ('smoking', 'Do you smoke?'),
+        ('yellow_fingers', 'Do you have yellow fingers?'),
+        ('anxiety', 'Do you experience anxiety?'),
+        ('peer_pressure', 'Do you experience peer pressure?'),
+        ('chronic_disease', 'Do you have any chronic diseases?'),
+        ('fatigue', 'Do you feel fatigue?'),
+        ('allergy', 'Do you have allergies?'),
+        ('wheezing', 'Do you have wheezing?'),
+        ('alcohol_consuming', 'Do you consume alcohol?'),
+        ('coughing', 'Do you have a cough?'),
+        ('shortness_of_breath', 'Do you experience shortness of breath?'),
+        ('swallowing_difficulty', 'Do you have difficulty swallowing?'),
+        ('chest_pain', 'Do you have chest pain?')
+      ] %}
+      <li>
+        <label>{{ label }}</label><br>
+        <input id="{{ field }}_yes" type="radio" name="{{ field }}" value="1" required>
+        <label for="{{ field }}_yes">Yes</label>
+        <input id="{{ field }}_no" type="radio" name="{{ field }}" value="0">
+        <label for="{{ field }}_no">No</label>
+      </li>
+      {% endfor %}
+
+      <!-- SUBMIT BUTTON -->
+      <li style="text-align:center;">
+        <button type="submit" class="submit-button">🔮 Predict</button>
+      </li>
+    </ul>
+  </form>
+</div>
+{% endblock %}

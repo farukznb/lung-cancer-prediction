@@ -1,0 +1,80 @@
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://www.saintjohnscancer.org/thoracic/wp-content/uploads/sites/5/2023/08/what-is-lung-cancer-saint-johns-cancer-institute.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 50px;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 40px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .result {
+      font-size: 26px;
+      font-weight: bold;
+      color: {% if 'High' in result %}#e63946{% else %}#2a9d8f{% endif %};
+      margin-bottom: 20px;
+    }
+
+    img.icon {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #4f46a5;
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #3b368c;
+    }
+
+    .tips {
+      text-align: left;
+      margin-top: 30px;
+    }
+
+    .tips h3 {
+      color: #4f46a5;
+    }
+
+    ul {
+      padding-left: 20px;
+      line-height: 1.6;
+    }
+
+    a.resource {
+      display: block;
+      color: #4f46a5;
+      margin-top: 8px;
+      text-decoration: none;
+    }
+
+    a.resource:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  

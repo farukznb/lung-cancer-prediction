@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- LEFT SIDE FORM -->
+    <div class="left">
+      <div class="header">
+        <h2 class="animation a1">Create Account</h2>
+        <h4 class="animation a2">Sign up with a username and password</h4>
+      </div>
+
+      <form class="form" method="POST" action="{{ url_for('signup') }}">
+        <input type="text" name="username" class="form-field animation a3" placeholder="Username" required>
+        <input type="password" name="password" class="form-field animation a4" placeholder="Password" required>
+
+        <button type="submit" class="animation a6">SIGN UP</button>
+        <p class="animation a5"><a href="{{ url_for('do_admin_login') }}">Already have an account? Login</a></p>
+      </form>
+    </div>
+
+    <!-- RIGHT SIDE IMAGE -->
+    <div class="right"></div>
+
+  </div>
+  <script>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        alert("{{ messages[0] }}");
+      {% endif %}
+    {% endwith %}
+  </script>
+  
+</body>
+</html>
