@@ -4,7 +4,4 @@ xgboost
 scikit-learn
 numpy
 pandas
-matplotlib
-seaborn
 gunicorn
-werkzeug
