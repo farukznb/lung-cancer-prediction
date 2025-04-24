@@ -7,6 +7,9 @@ import logging
 from logging.handlers import RotatingFileHandler
 from werkzeug.security import generate_password_hash, check_password_hash
 
+# Disable GPU usage, force CPU-only mode
+os.environ["CUDA_VISIBLE_DEVICES"] = ""  # This is correctly set to an empty string
+
 # === Configuration de l'application ===
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', os.urandom(12))
