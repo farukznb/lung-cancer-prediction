@@ -16,7 +16,7 @@
     display: inline-block;
     vertical-align: top;
     position: relative;
-    margin: 0;
+    margin: 0 0.5rem 0 1rem;
     cursor: pointer;
     border: 1px solid var(--bc, var(--border));
     background: var(--b, var(--background));
@@ -120,6 +120,7 @@
   }
   input[type='radio'] {
     border-radius: 50%;
+    accent-color: #1a3c34;
     &:after {
       width: 19px;
       height: 19px;
@@ -131,20 +132,6 @@
     &:checked {
       --s: .5;
     }
-  }
-}
-
-
-
-ul {
-  margin: 12px;
-  padding: 0;
-  list-style: none;
-  width: 100%;
-  max-width: 320px;
-  li {
-    margin: 16px 0;
-    position: relative;
   }
 }
 
@@ -160,79 +147,106 @@ html {
   }
 }
 
-
 body {
+  background-image: url(https://www.saintjohnscancer.org/thoracic/wp-content/uploads/sites/5/2023/08/what-is-lung-cancer-saint-johns-cancer-institute.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: clamp(1rem, 2.5vw, 2rem);
   min-height: 100vh;
-  font-family: 'Inter', Arial, sans-serif;
-  color: #8A91B4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
   display: flex;
-  background: url("https://www.medicalnewstoday.com/content/images/articles/324/324682/lungs.jpg") no-repeat center center fixed;
-
   justify-content: center;
   align-items: center;
-  background: #F6F8FF;
-  @media(max-width: 800px) {
-    padding: 20px;
-  }
 }
 
+/* Overlay for better text readability */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
 
 .form-wrapper {
   max-width: 700px;
-  margin: 30px auto;
-  padding: 40px;
+  margin: 2rem auto;
+  padding: clamp(1rem, 2.5vw, 2rem);
   border-radius: 15px;
   background: #f7f7fa;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   font-family: 'Segoe UI', sans-serif;
+  width: clamp(300px, 90%, 700px);
 }
 
 h3.title {
-  color: #5e4b8b;
-  font-size: 26px;
-  margin-bottom: 30px;
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: #1a3c34;
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 form ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 12px 0;
+  width: 100%;
 }
 
 form li {
-  margin-bottom: 20px;
+  margin: 1.2rem 0;
+  position: relative;
   font-size: 16px;
   text-align: left;
 }
 
 form label {
-  font-weight: 600;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-weight: 500;
+  color: #444;
+  display: inline-block;
+  margin-bottom: 0.3rem;
   margin-right: 10px;
 }
 
-input[type="radio"],
 input[type="number"] {
-  margin-right: 10px;
-}
-
-input[type="number"] {
-  padding: 8px;
   width: 100%;
-  border-radius: 6px;
+  padding: 0.5rem;
   border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border-color: #1a3c34;
+  box-shadow: 0 0 5px rgba(26, 60, 52, 0.3);
 }
 
 .submit-button {
-  background-color: #7e57c2;
+  background: linear-gradient(90deg, #7e57c2, #bd36bd);
   color: white;
   border: none;
-  padding: 12px 25px;
-  border-radius: 6px;
-  font-size: 18px;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease, transform 0.1s ease;
 }
 
 .submit-button:hover {
-  background-color: #6a4bc3;
+  background: linear-gradient(90deg, #2a5c54, #1a3c34);
+  transform: scale(1.05);
+}
+
+.submit-button:active {
+  transform: scale(0.95);
 }
